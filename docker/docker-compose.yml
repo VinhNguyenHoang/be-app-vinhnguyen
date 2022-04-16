@@ -1,0 +1,25 @@
+version: '3'
+services:
+  be-php:
+    image: php:8.0-fpm
+    volumes:
+      - ../api/:/var/www/html
+  be-nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ../api/:/var/www/html
+  be-mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_DATABASE=be-app
+    volumes:
+      - ./db/data:/var/lib/mysql
+    command:
+      - --innodb_use_native_aio=0
+      - --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
