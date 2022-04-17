@@ -4,6 +4,7 @@ services:
     build: ./php
     volumes:
       - ../api/:/var/www/html
+    container_name: be-php
   be-nginx:
     image: nginx:latest
     ports:
@@ -11,6 +12,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
       - ../api/:/var/www/html
+    container_name: be-nginx
   be-mysql:
     image: mysql:8.0
     environment:
@@ -23,3 +25,4 @@ services:
       - --default-authentication-plugin=mysql_native_password
     ports:
       - "3306:3306"
+    container_name: be-mysql
