@@ -1,7 +1,7 @@
 version: '3'
 services:
   be-php:
-    image: php:8.0-fpm
+    build: ./php
     volumes:
       - ../api/:/var/www/html
   be-nginx:
