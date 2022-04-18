@@ -111,3 +111,6 @@ By default, the API address will be `127.0.0.1`
   curl -X GET "127.0.0.1/api/user/statistic?email=testwithcurl@gmail.com"
   ```
   Above GET request will fetch statistic data of user with email `testwithcurl@gmail.com`
+
+#Deployed with Heroku
+The API url for this project can be found here: https://be-app-vinhnguyen.herokuapp.com
