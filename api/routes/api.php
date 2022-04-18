@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'auth'
-], function () {
+], function() {
     Route::post('login', 'Auth\AuthController@login');
 
     Route::group([
@@ -26,3 +26,9 @@ Route::group([
         // Route::get('me', 'Auth\AuthController@me');
     });
 });
+
+// enable throttle:api to prevent spamming from incoming requests (allows 60 requests per minute)
+Route::middleware(['throttle:api'])->post('register', 'RegisterController@storeRegister');
+
+Route::get('user-by-event/{event_id}', 'UserController@showUserByEvent');
+Route::delete('user', 'UserController@deleteUser');
